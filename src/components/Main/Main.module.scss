@@ -20,7 +20,7 @@ body {
 }
 
 .mainText {
-  font-size: clamp(14px, 3vw, 28px);
+  font-size: clamp(14px, 3vw, 22px);
   margin-top: 85px;
   max-width: 55%; 
   line-height: 1.4; 
@@ -63,7 +63,7 @@ body {
     width: 40vw;
     min-width: 380px;
     max-width: 570px;
-    height: 50px;
+    height: 45px;
     border: 1px solid white;
     border-radius: 18px;
     background: #ff6dec5b;
@@ -80,7 +80,7 @@ body {
 
   button {
     width: 60px;
-    height: 60px;
+    height: 58px;
     background-color: #00b7ff;
     border: transparent;
     border-radius: 14px;
@@ -118,14 +118,10 @@ body {
     background: linear-gradient(135deg, #ffffff00, #fb7cff6b); 
     border: 1px solid white;
     border-radius: 14px;
-    width: 290px;
+    width: 250px;
     height: 70px;
     text-align: left;
     padding: 35px 26px;
-
-    span {
-
-    }
 
     h1 {
       font-size: 22px;
