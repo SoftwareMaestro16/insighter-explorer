@@ -1,0 +1,119 @@
+$bg-color-reversed: linear-gradient(135deg, rgb(170, 53, 221) 9%, rgb(167, 57, 214) 14%, rgba(43,88,182,1) 74%);
+
+.navStyle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    background: $bg-color-reversed;
+    height: 8.2vh;
+    padding: 0 7%;
+    width: 100vw;
+    height: 8.5vh;
+    box-sizing: border-box;
+    border-bottom: 1px solid white;
+    
+    .leftPart {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+  
+      h1 {
+        color: white;
+        font-size: 42px;
+  
+      }
+  
+      .insighterLogo {
+        width: 110px;
+        height: 100px;
+        position: relative;
+        right: 20px;
+        
+      }
+    }
+  
+    .rightPart {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      cursor: pointer;
+
+      h1 {
+        font-size: 30px;
+        font-weight: 500;
+        color: #ffffff;
+      }
+  
+      a {
+        text-decoration: none; 
+        color: white; 
+        text-transform: uppercase;
+        font-size: 30px;
+      }
+  
+    }
+  
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+  
+      .bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+      }
+    }
+  
+    @media (max-width: 768px) {
+        .rightPart {
+            display: none; 
+            flex-direction: column;
+            position: fixed; 
+            top: 0;
+            right: 0;
+            background: $bg-color-reversed; 
+            padding: 12px;
+            width: 42%; 
+            height: 100vh; 
+            z-index: 10; 
+        
+            &.menuOpen {
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                padding-top: 7.5%;
+                justify-content: flex-start;
+                border-radius: 0;
+        
+                a, h1 {
+                    margin: 0; 
+                    font-size: 1.8rem; 
+                    text-align: center;
+                }
+            }
+        }
+  
+        .hamburger {
+            display: flex;
+        }
+    }
+}
+  
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a1a1a9e; 
+  z-index: 9; 
+  cursor: pointer; 
+}

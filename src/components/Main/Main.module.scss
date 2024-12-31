@@ -1,0 +1,141 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+$bg-color: linear-gradient(135deg, rgba(43,88,182,1) 14%, rgb(146, 75, 217) 66%, rgb(144, 71, 222) 93%);
+$bg-color-reversed: linear-gradient(135deg, rgba(185,95,223,1) 9%, rgba(185,95,223,1) 14%, rgba(43,88,182,1) 74%);
+
+
+body {
+  margin: 0 auto;
+  text-align: center;
+  background: $bg-color;
+  height: 100vh;
+}
+
+* {
+  font-family: 'Ubuntu';
+  color: white;
+}
+
+.mainText {
+  font-size: clamp(14px, 3vw, 28px);
+  margin-top: 85px;
+  max-width: 55%; 
+  line-height: 1.4; 
+  word-wrap: break-word; 
+  text-align: center; 
+  margin-left: auto;
+  margin-right: auto;
+
+  .span1 {
+    background: linear-gradient(135deg, #fa6eee, #ba72f1); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    text-fill-color: transparent;
+  }
+
+  .span2 {
+    background: linear-gradient(135deg, #4ac7f8, #00b7ff); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    text-fill-color: transparent;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainText {
+    margin-top: 70px;
+    max-width: 86%;
+  }
+}
+
+.inputField {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+
+  input {
+    width: 40vw;
+    min-width: 380px;
+    max-width: 570px;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 18px;
+    background: #ff6dec5b;
+    padding: 6px 13px;
+    font-size: 24px;
+    color: white; 
+
+    &::placeholder {
+      color: #e4e4e4c7; 
+      opacity: 1;
+    }
+
+  }
+
+  button {
+    width: 60px;
+    height: 60px;
+    background-color: #00b7ff;
+    border: transparent;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:active {
+      transform: scale(0.95); 
+      filter: brightness(1.2); 
+    }
+
+    img {
+      width: 60px;
+      height: 52px; 
+    }
+    
+  }
+}
+
+.statsBlocks {
+  margin: 90px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  
+
+  .statsBlock {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background: linear-gradient(135deg, #ffffff00, #fb7cff6b); 
+    border: 1px solid white;
+    border-radius: 14px;
+    width: 290px;
+    height: 70px;
+    text-align: left;
+    padding: 35px 26px;
+
+    span {
+
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #e7e7e7;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin: 0;
+    }
+  }
+}
