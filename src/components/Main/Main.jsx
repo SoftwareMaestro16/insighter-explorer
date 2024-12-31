@@ -63,7 +63,6 @@ function Main() {
           <h1>Total Supply</h1>
           <h2>{totalSupply}</h2>
         </div>
-        
       </div>
     </>
   )
