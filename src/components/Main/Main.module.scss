@@ -44,6 +44,12 @@ body {
   }
 }
 
+@media (min-width: 1560px) {
+  .mainText {
+    max-width: 35%;
+  }
+}
+
 .inputField {
   margin-top: 60px;
   display: flex;
