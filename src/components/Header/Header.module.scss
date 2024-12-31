@@ -117,3 +117,17 @@ $bg-color-reversed: linear-gradient(135deg, rgb(170, 53, 221) 9%, rgb(167, 57, 2
   z-index: 9; 
   cursor: pointer; 
 }
+
+@media (max-width: 768px) {
+    .leftPart {
+      
+        h1 {
+            font-size: 36px;
+        }
+
+        .insighterLogo {
+            width: 85px;
+            height: 70px;
+        }
+    }
+  }

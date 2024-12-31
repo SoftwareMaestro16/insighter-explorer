@@ -64,6 +64,8 @@ function Main() {
           <h2>{totalSupply}</h2>
         </div>
       </div>
+
+      <br />
     </>
   )
 }

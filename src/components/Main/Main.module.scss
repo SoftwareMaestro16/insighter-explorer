@@ -44,13 +44,6 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .mainText {
-    margin-top: 70px;
-    max-width: 86%;
-  }
-}
-
 .inputField {
   margin-top: 60px;
   display: flex;
@@ -132,6 +125,28 @@ body {
     h2 {
       font-size: 34px;
       margin: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mainText {
+    margin-top: 70px;
+    max-width: 86%;
+  }
+
+  .inputField {
+     
+    input {
+      max-width: 160px;
+      height: 35px;
+    }
+
+    button {
+      width: 50px;
+      height: 48px;
+
+      
     }
   }
 }
