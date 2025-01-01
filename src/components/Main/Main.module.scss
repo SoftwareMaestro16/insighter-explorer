@@ -81,7 +81,7 @@ body {
     width: 60px;
     height: 58px;
     background-color: #00b7ff;
-    border: transparent;
+    border: 1px solid white;
     border-radius: 14px;
     display: flex;
     justify-content: center;
@@ -93,8 +93,8 @@ body {
     }
 
     img {
-      width: 60px;
-      height: 52px; 
+      width: 58px;
+      height: 50px; 
     }
     
   }

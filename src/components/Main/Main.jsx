@@ -2,33 +2,19 @@ import { useState, useEffect } from 'react';
 import styles from './Main.module.scss';
 import Header from '../Header/Header';
 import axios from 'axios';
-import formatNumber from '../../utils/formatNumber';
+import useTonData from '../../utils/useTonData';
 
 function Main() {
-  const [tonData, setTonData] = useState(null); 
+  const { price, volume, totalSupply, marketCap } = useTonData();
+  const [inputValue, setInputValue] = useState(''); 
 
-  useEffect(() => {
-    axios
-      .get('https://api.geckoterminal.com/api/v2/networks/ton/tokens/EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c')
-      .then((response) => {
-        const attributes = response.data.data.attributes;
-        setTonData({
-          price_usd: attributes.price_usd,
-          volume_usd_h24: attributes.volume_usd.h24,
-          total_supply: attributes.total_supply,
-          market_cap_usd: attributes.market_cap_usd,
-        });
-        console.log('Fetched Data:', attributes);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
-  const price = tonData ? `${Number(tonData.price_usd).toFixed(2)}` : '~';
-  const volume = tonData ? formatNumber(tonData.volume_usd_h24) : '~';
-  const totalSupply = tonData ? formatNumber(tonData.total_supply) : '~';
-  const marketCap = tonData ? formatNumber(tonData.market_cap_usd) : '~';
+  const handleButtonClick = () => {
+    console.log('Input Value:', inputValue); 
+  };
 
   return (
     <>
@@ -41,8 +27,13 @@ function Main() {
           <span className={styles.span2}> The Open Network</span></h1>
       </div>
       <div className={styles.inputField}>
-        <input type="text" placeholder='Enter Address...' />
-        <button>
+        <input  
+          type="text" 
+          placeholder='Enter Address...'
+          value={inputValue} 
+          onChange={handleInputChange}
+        />
+        <button onClick={handleButtonClick}>
           <img src="/in-logo.png" alt="Insighter Search" />
         </button>
       </div>
