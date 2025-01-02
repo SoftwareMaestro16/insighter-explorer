@@ -4,4 +4,4 @@ export const types = [
     'jetton_wallet',
     'nft_collection',
     'nft_item',
-]
+];
