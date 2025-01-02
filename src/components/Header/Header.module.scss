@@ -71,6 +71,7 @@ $bg-color-reversed: linear-gradient(135deg, rgb(170, 53, 221) 9%, rgb(167, 57, 2
         background-color: white;
       }
     }
+
   
     @media (max-width: 768px) {
         .rightPart {
@@ -106,6 +107,8 @@ $bg-color-reversed: linear-gradient(135deg, rgb(170, 53, 221) 9%, rgb(167, 57, 2
         }
     }
 }
+
+
   
 .overlay {
   position: fixed;
@@ -119,15 +122,18 @@ $bg-color-reversed: linear-gradient(135deg, rgb(170, 53, 221) 9%, rgb(167, 57, 2
 }
 
 @media (max-width: 768px) {
-    .leftPart {
-      
-        h1 {
-            font-size: 36px;
-        }
+  .navStyle {
 
-        .insighterLogo {
-            width: 85px;
-            height: 70px;
-        }
+    .leftPart {
+      h1 {
+          font-size: 31px;
+      }
+
+      .insighterLogo {
+          margin-left: 3px;
+          width: 75px;
+          height: 60px;
+      }
     }
   }
+}

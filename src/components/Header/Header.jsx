@@ -23,7 +23,7 @@ function Header() {
         <header>
           <nav className={styles.navStyle}>
             <div className={styles.leftPart} onClick={() => handleNavigation('/')}>
-              <h1>Insighter</h1>
+              <h1 className={styles.insighterText}>Insighter</h1>
               <img className={styles.insighterLogo} src="/in-logo.png" alt="Insighter Logo" />
             </div>
             <div className={styles.hamburger} onClick={toggleMenu}>

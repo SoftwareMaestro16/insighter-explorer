@@ -5,35 +5,83 @@
     padding: 15px; 
     gap: 7px; 
 
-    h2 {
-        font-size: 24px;
+    .fullAddress {
+        display: inline; 
     }
 
-    span {
-        font-size: 24px;
-        font-weight: 400;
+    .shortAddress {
+        display: none; 
+    }
+
+    @media (max-width: 768px) {
+        .fullAddress {
+            display: none;
+        }
+
+        .shortAddress {
+            display: inline; 
+        }
+    }
+
+    h2 {
+        font-size: clamp(13px, 4vw, 24px);
+
+        span {
+            font-size: clamp(13px, 4vw, 24px);
+            font-weight: 400;
+        }
+
     }
 
     .additionalInfo {
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: 20px;
 
         h3 {
+            font-size: clamp(14px, 3vw, 20px);
             margin-bottom: 0px;
             padding: 0; 
         }
+
+        a {
+            text-decoration: none;
+            font-size: clamp(14px, 3vw, 20px); 
+        }
     }
+
+    .linksExplorers {
+        margin-left: -5px;
+    }
+
 
     .linksExplorers a {
         margin-right: 5px; 
+        
     }
     
     .linksExplorers a:last-child {
         margin-left: 5px; 
+        
     }
 }
 
 .contractInfo > * {
     margin: 0; 
 }
+
+.address {
+    display: flex;
+    flex-direction: row;
+
+    span {
+        margin-left: 6px;
+    }
+}
+
+.rawAddress {
+    display: flex;
+    align-items: center;
+}
+
