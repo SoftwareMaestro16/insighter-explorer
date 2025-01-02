@@ -1,24 +1,23 @@
 .copyButton {
-    background: none; /* Убираем фоновый цвет кнопки */
-    border: none; /* Убираем границы кнопки */
-    cursor: pointer; /* Указываем курсор "рука" при наведении */
-    margin-left: 5px; /* Отступ слева от текста */
-    display: flex; /* Для выравнивания содержимого кнопки */
-    align-items: center; /* Центрирование содержимого кнопки по вертикали */
-    padding: 0; /* Убираем внутренние отступы */
-    color: inherit; /* Наследуем цвет текста */
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0;
 
     img {
-        width: 20px; /* Устанавливаем ширину изображения */
-        height: 20px; /* Устанавливаем высоту изображения */
-        vertical-align: middle; /* Выравниваем изображение с текстом */
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
     }
 
     &:hover {
-        opacity: 0.8; /* Уменьшаем прозрачность при наведении */
+        opacity: 0.8;
     }
 
     &:active {
-        transform: scale(0.95); /* Небольшое уменьшение кнопки при клике */
+        transform: scale(0.95);
     }
 }
