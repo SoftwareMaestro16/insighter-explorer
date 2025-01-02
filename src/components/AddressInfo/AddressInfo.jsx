@@ -5,6 +5,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { ContractComponents } from "./ContractTypesComponents/ContractComponent";
+import { use } from "react";
 
 function AddressInfo() {
     const { address } = useParams();
@@ -13,6 +14,7 @@ function AddressInfo() {
     const [contractBalance, setContractBalance] = useState(0);
     const [rawAddres, setRawAddress] = useState('0:00a...bc000');
     const [status, setStatus] = useState('Nonexist');
+    const [walletName, setWalletName] = useState('');
 
     useEffect(() => {
         if (!address) return;
@@ -28,6 +30,9 @@ function AddressInfo() {
 
                 const parsedStatus = response.data.status;
                 setStatus(parsedStatus);
+
+                const name = response.data.name || '';
+                setWalletName(name);
 
                 const interfaces = response.data.interfaces || [];
                 
@@ -63,6 +68,7 @@ function AddressInfo() {
                         contractInterface={contractInterface.join(", ")}
                         rawAddress={rawAddres}
                         status={status}
+                        walletName={walletName || undefined}
                     />
                 )}
             </div>

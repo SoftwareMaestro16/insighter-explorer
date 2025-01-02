@@ -1,0 +1,38 @@
+.additionalInfoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .rawAddress {
+        display: flex;
+        align-items: center;
+    }
+
+    .additionalInfo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 17px;
+    
+        h3 {
+            font-size: clamp(14px, 3vw, 20px);
+            margin-bottom: 0px;
+            padding: 0; 
+        }
+    
+        a {
+            text-decoration: none;
+            font-size: clamp(14px, 3vw, 20px); 
+        }
+    }
+    
+    .linksExplorers a {
+        margin-right: 5px; 
+        
+    }
+    
+    .linksExplorers a:last-child {
+        margin-left: 5px; 
+        
+    }
+}
