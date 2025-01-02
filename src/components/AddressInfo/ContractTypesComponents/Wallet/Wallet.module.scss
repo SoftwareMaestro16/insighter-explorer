@@ -1,0 +1,39 @@
+.contractInfo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 15px; 
+    gap: 7px; 
+
+    h2 {
+        font-size: 24px;
+    }
+
+    span {
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    .additionalInfo {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        h3 {
+            margin-bottom: 0px;
+            padding: 0; 
+        }
+    }
+
+    .linksExplorers a {
+        margin-right: 5px; 
+    }
+    
+    .linksExplorers a:last-child {
+        margin-left: 5px; 
+    }
+}
+
+.contractInfo > * {
+    margin: 0; 
+}

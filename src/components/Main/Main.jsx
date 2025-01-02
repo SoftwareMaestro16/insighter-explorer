@@ -2,18 +2,27 @@ import { useState, useEffect } from 'react';
 import styles from './Main.module.scss';
 import Header from '../Header/Header';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import useTonData from '../../utils/useTonData';
+import AddressInfo from '../AddressInfo/AddressInfo';
 
 function Main() {
   const { price, volume, totalSupply, marketCap } = useTonData();
-  const [inputValue, setInputValue] = useState(''); 
+  const [address, setAddress] = useState(''); 
+  const [submittedAddress, setSubmittedAddress] = useState('');
+  const navigate = useNavigate(); 
+
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    setAddress(event.target.value);
   };
 
   const handleButtonClick = () => {
-    console.log('Input Value:', inputValue); 
+    console.log('Submitted Address:', address);
+    setSubmittedAddress(address); 
+    if (address) {
+      navigate(`/${address}`); 
+    }
   };
 
   return (
@@ -30,7 +39,7 @@ function Main() {
         <input  
           type="text" 
           placeholder='Enter Address...'
-          value={inputValue} 
+          value={address} 
           onChange={handleInputChange}
         />
         <button onClick={handleButtonClick}>
