@@ -1,4 +1,4 @@
-import styles from "./additionalInfo.module.scss";
+import styles from "./AdditionalInfo.module.scss";
 import CopyButton from "../../../../CopyButton/CopyButton";
 import { capitalizeWords } from "../../../../../utils/capitalizeWords";
 
