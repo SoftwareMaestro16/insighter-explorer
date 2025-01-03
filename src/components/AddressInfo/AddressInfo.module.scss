@@ -15,46 +15,8 @@ $bg-color: linear-gradient(135deg, rgba(159, 60, 201, 0.92) 9%, rgb(126, 79, 192
     padding: 10px;
 }
 
-.error {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 15%;
-    gap: 15px;
-
-    h2 {
-        margin: 0;
-    }
-
-    h3 {
-        margin: 0;
-        font-size: clamp(14px, 3vw, 20px);
-    }
-
-    button {
-        background: $bg-color;
-        border: 1px solid white;
-        border-radius: 12px;
-        width: 160px;
-        height: 42px;
-        font-size: 28px;
-    }
-}
-
 @media (max-width: 768px) {
     .blockInfo {
         padding: 2px;
-    }
-
-    .error {
-        margin-top: 33%;
-    }
-}
-
-@media (max-width: 1100px) {
-
-
-    .error {
-        margin-top: 25%;
     }
 }

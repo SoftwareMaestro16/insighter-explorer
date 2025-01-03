@@ -1,0 +1,93 @@
+.container {
+    padding: 10px;
+}
+
+.contractInfo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 7px; 
+
+    .fullAddress {
+        display: inline; 
+    }
+
+    .shortAddress {
+        display: none; 
+    }
+
+    @media (max-width: 1068px) {
+        .fullAddress {
+            display: none;
+        }
+
+        .shortAddress {
+            display: inline; 
+        }
+    }
+
+
+    h2 {
+        font-size: clamp(13px, 4vw, 24px);
+
+        span {
+            font-size: clamp(13px, 4vw, 24px);
+            font-weight: 400;
+        }
+
+    }
+    
+}
+
+.contractInfo > * {
+    margin: 0; 
+}
+
+.address {
+    display: flex;
+    flex-direction: row;
+
+    span {
+        margin-left: 5px;
+    }
+}
+
+
+.additionalInfoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .rawAddress {
+        display: flex;
+        align-items: center;
+    }
+
+    .additionalInfo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 17px;
+    
+        h3 {
+            font-size: clamp(14px, 3vw, 20px);
+            margin-bottom: 0px;
+            padding: 0; 
+        }
+    
+        a {
+            text-decoration: none;
+            font-size: clamp(14px, 3vw, 20px); 
+        }
+    }
+    
+    .linksExplorers a {
+        margin-right: 5px; 
+        
+    }
+    
+    .linksExplorers a:last-child {
+        margin-left: 5px; 
+        
+    }
+}

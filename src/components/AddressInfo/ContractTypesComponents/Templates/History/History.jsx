@@ -18,7 +18,7 @@ function History({ rawAddress }) {
 
     if (!history) {
         return (
-            <h3>History is Emppy.</h3>
+            <h3>History is Empty.</h3>
         );
     }
 
