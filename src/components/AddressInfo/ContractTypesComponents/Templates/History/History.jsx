@@ -21,8 +21,8 @@ function History({ rawAddress }) {
 
     const formatNumber = (number) => {
         if (number > 0) {
-            const formatted = number.toFixed(2); // Округляем до 2 знаков после запятой
-            return formatted.endsWith(".00") ? parseInt(formatted, 10) : formatted; // Убираем .00, если есть
+            const formatted = number.toFixed(2); 
+            return formatted.endsWith(".00") ? parseInt(formatted, 10) : formatted; 
         }
         return number;
     };

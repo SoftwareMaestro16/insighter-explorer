@@ -17,7 +17,7 @@ function AddressInfo() {
     const [contractInterface, setContractInterface] = useState([]);
     const [contractType, setContractType] = useState("unknown");
     const [contractBalance, setContractBalance] = useState(0);
-    const [rawAddress, setRawAddress] = useState('0:00a...bc000');
+    const [rawAddress, setRawAddress] = useState('');
     const [status, setStatus] = useState('Nonexist');
     const [walletName, setWalletName] = useState('');
     const [activeTab, setActiveTab] = useState("History"); 
