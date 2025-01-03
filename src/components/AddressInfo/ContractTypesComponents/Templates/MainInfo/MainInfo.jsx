@@ -15,7 +15,7 @@ function MainInfo({ address, contractBalance, contractInterface, walletName }) {
                         <>
                             <span className={styles.fullAddress}>{toUserFriendlyAddress(address)}</span>
                             <span className={styles.shortAddress}>
-                                {`${address.substring(0, 4)}...${address.substring(address.length - 4)}`}
+                                {`${toUserFriendlyAddress(address).substring(0, 4)}...${toUserFriendlyAddress(address).substring(toUserFriendlyAddress(address).length - 4)}`}
                             </span>
                             <CopyButton textToCopy={toUserFriendlyAddress(address)} />
                         </>
