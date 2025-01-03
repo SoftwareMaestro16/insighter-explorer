@@ -1,5 +1,6 @@
 import styles from "./MainInfo.module.scss";
 import CopyButton from "../../../../CopyButton/CopyButton";
+import { toUserFriendlyAddress } from "@tonconnect/ui-react";
 
 function MainInfo({ address, contractBalance, contractInterface, walletName }) {
 
@@ -9,7 +10,7 @@ function MainInfo({ address, contractBalance, contractInterface, walletName }) {
             {walletName && 
             <h2>Name: <span>{walletName}</span></h2>
             }
-            <h2 className={styles.address}>Address:  
+            <h2 className={toUserFriendlyAddress(styles.address)}>Address:  
               <span className={styles.fullAddress}>{address}</span>
               <span className={styles.shortAddress}>{address.substring(0, 4) + '...' + address.substring(address.length - 4)}</span>
               <CopyButton textToCopy={address} />
