@@ -6,15 +6,22 @@ import { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { ContractComponents } from "./ContractTypesComponents/ContractComponent";
 import { use } from "react";
+import History from "./ContractTypesComponents/Templates/History/History";
+import Tokens from "./ContractTypesComponents/Templates/Tokens/Tokens";
+import Collectibles from "./ContractTypesComponents/Templates/Collectibles/Collectibles";
+import Methods from "./ContractTypesComponents/Templates/Methods/Methods";
+import ContractMenu from "./ContractTypesComponents/Templates/ContractMenu/ContractMenu";
 
 function AddressInfo() {
     const { address } = useParams();
     const [contractInterface, setContractInterface] = useState([]);
     const [contractType, setContractType] = useState("unknown");
     const [contractBalance, setContractBalance] = useState(0);
-    const [rawAddres, setRawAddress] = useState('0:00a...bc000');
+    const [rawAddress, setRawAddress] = useState('0:00a...bc000');
     const [status, setStatus] = useState('Nonexist');
     const [walletName, setWalletName] = useState('');
+    const [activeTab, setActiveTab] = useState("History"); 
+
 
     useEffect(() => {
         if (!address) return;
@@ -44,8 +51,6 @@ function AddressInfo() {
                 const type = getClosestContractType(processedInterfaces);
                 setContractType(type);
 
-                console.log("Processed interfaces:", processedInterfaces);
-                console.log("Determined type:", type);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
@@ -54,7 +59,6 @@ function AddressInfo() {
     }, [address]);
 
     const ComponentToRender = contractType !== "unknown" ? ContractComponents[contractType] : null;
-    console.log('ton', contractBalance);
     
     return (
         <>
@@ -66,12 +70,18 @@ function AddressInfo() {
                         address={address}
                         contractBalance={contractBalance}
                         contractInterface={contractInterface.join(", ")}
-                        rawAddress={rawAddres}
+                        rawAddress={rawAddress}
                         status={status}
                         walletName={walletName || undefined}
                     />
                 )}
             </div>
+
+            <ContractMenu activeTab={activeTab} setActiveTab={setActiveTab} />
+            {activeTab === "History" && <History rawAddress={rawAddress} />}
+            {activeTab === "Tokens" && <Tokens rawAddress={rawAddress} />}
+            {activeTab === "Collectibles" && <Collectibles rawAddress={rawAddress} />}
+            {activeTab === "Methods" && <Methods rawAddress={rawAddress} />}
         </>
     );
 }

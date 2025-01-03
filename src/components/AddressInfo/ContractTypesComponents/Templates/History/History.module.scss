@@ -1,0 +1,89 @@
+$bg-color: linear-gradient(135deg, rgba(159, 60, 201, 0.92) 9%, rgb(126, 79, 192) 14%, rgb(59, 102, 194) 74%);
+
+.historyContainer {
+    width: 91.5vw;
+    height: auto;
+    max-width: 1500px;
+    background: $bg-color;
+    border: 1px solid white;
+    border-radius: 14px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .historyBlock {
+        
+        
+        .block {
+            border-bottom: 1px solid white;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 3px 20px;
+            font-size: clamp(10px, 4vw, 18px);
+
+            .value {
+                flex: 1;
+                text-align: right; 
+                padding: 0;
+            }
+
+        } 
+
+        .address {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-left: clamp(13%, 7vw, 22%);
+    
+        }
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .historyContainer {
+        .historyBlock {
+            padding: 0px 0px;
+    
+            .block {
+                font-size: clamp(4px, 3vw, 13px);
+                flex-direction: column;
+            }
+        }
+    } 
+}
+
+@media (max-width: 1100px) {
+    .historyContainer {
+        .historyBlock {
+            padding: 0px 0px;
+
+            .block {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .time {
+                    text-align: left;
+                }
+
+                .address {
+                    margin: 0;
+                    margin-top: -40px ;
+                    text-align: left;
+                }
+
+                .value {
+                    margin-top: -55px;
+                    align-self: flex-end; 
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

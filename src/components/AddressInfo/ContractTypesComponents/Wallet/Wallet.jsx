@@ -1,8 +1,7 @@
 import styles from './Wallet.module.scss';
 import AdditionalInfo from '../Templates/AdditionalInfo/AddtionalInfo';
 import MainInfo from '../Templates/MainInfo/MainInfo';
-import History from '../Templates/History/History';
-import ContractMenu from '../Templates/ContractMenu/ContractMenu';
+
 
 function Wallet({ address, contractBalance, contractInterface, rawAddress, status, walletName }) {
     
@@ -15,7 +14,7 @@ function Wallet({ address, contractBalance, contractInterface, rawAddress, statu
               contractInterface={contractInterface}
               walletName={walletName || undefined}
             />
-            <h2 className={styles.test}>test</h2>
+            {/* <h2 className={styles.test}>test</h2> */}
             <AdditionalInfo
               address={address}
               rawAddress={rawAddress}
@@ -23,10 +22,7 @@ function Wallet({ address, contractBalance, contractInterface, rawAddress, statu
             />    
           </div>
 
-          <ContractMenu />
-          <History
-            rawAddress={rawAddress}
-          />
+          
           
         </>
         

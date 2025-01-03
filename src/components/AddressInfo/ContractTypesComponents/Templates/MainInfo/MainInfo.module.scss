@@ -12,7 +12,7 @@
         display: none; 
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1068px) {
         .fullAddress {
             display: none;
         }
@@ -21,6 +21,7 @@
             display: inline; 
         }
     }
+
 
     h2 {
         font-size: clamp(13px, 4vw, 24px);
