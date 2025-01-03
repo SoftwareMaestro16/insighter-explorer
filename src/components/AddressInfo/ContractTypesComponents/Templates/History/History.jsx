@@ -21,8 +21,9 @@ function History({ rawAddress }) {
 
     const formatNumber = (number) => {
         if (number > 0) {
-            const formatted = number.toFixed(2); 
-            return formatted.endsWith(".00") ? parseInt(formatted, 10) : formatted; 
+            const truncated = Math.trunc(number * 100) / 100;
+            const formatted = truncated.toFixed(2);
+            return formatted.endsWith(".00") ? parseInt(formatted, 10) : formatted;
         }
         return number;
     };
@@ -93,7 +94,7 @@ function History({ rawAddress }) {
             {history.map((event) => (
                 <div key={event.event_id} className={styles.historyBlock}>
                     {event.actions.map((action, index) =>
-                        <div key={index}>
+                        <div key={index} className={styles.blocks}>
                             {renderActionDetails(action, event.timestamp)}
                         </div>
                         

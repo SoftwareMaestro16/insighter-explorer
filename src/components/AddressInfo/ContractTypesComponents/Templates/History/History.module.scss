@@ -16,21 +16,27 @@ $bg-color: linear-gradient(135deg, rgba(159, 60, 201, 0.92) 9%, rgb(126, 79, 192
         
         
         .block {
-            border-bottom: 1px solid white;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             gap: 30px;
             padding: 3px 20px;
             font-size: clamp(10px, 4vw, 18px);
+            border-bottom: 1px solid white;
 
             .value {
                 flex: 1;
                 text-align: right; 
                 padding: 0;
+                
+
             }
 
+            
+
         } 
+
+        
 
         .address {
             display: flex;
@@ -39,11 +45,13 @@ $bg-color: linear-gradient(135deg, rgba(159, 60, 201, 0.92) 9%, rgb(126, 79, 192
             justify-content: center;
             text-align: center;
             margin-left: clamp(13%, 7vw, 22%);
+            
     
         }
     }
-    
+
 }
+
 
 @media (max-width: 768px) {
     .historyContainer {
