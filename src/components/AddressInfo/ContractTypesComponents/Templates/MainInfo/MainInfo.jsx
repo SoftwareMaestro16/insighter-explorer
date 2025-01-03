@@ -3,7 +3,7 @@ import CopyButton from "../../../../CopyButton/CopyButton";
 import { toUserFriendlyAddress } from "@tonconnect/ui-react";
 
 function MainInfo({ address, contractBalance, contractInterface, walletName }) {
-    const isValidTonAddress = (addr) => addr.includes(":");
+    const isValidTonAddress = (addr) => addr.startsWith("0:");
 
     return (
         <>
@@ -15,14 +15,18 @@ function MainInfo({ address, contractBalance, contractInterface, walletName }) {
                         <>
                             <span className={styles.fullAddress}>{toUserFriendlyAddress(address)}</span>
                             <span className={styles.shortAddress}>
-                                {toUserFriendlyAddress(
-                                    address.substring(0, 4) + "..." + address.substring(address.length - 4)
-                                )}
+                                {`${address.substring(0, 4)}...${address.substring(address.length - 4)}`}
                             </span>
                             <CopyButton textToCopy={toUserFriendlyAddress(address)} />
                         </>
                     ) : (
-                        <span className={styles.invalidAddress}>Invalid Address Format</span>
+                        <>
+                            <span className={styles.fullAddress}>{address}</span>
+                            <span className={styles.shortAddress}>
+                                {`${address.substring(0, 4)}...${address.substring(address.length - 4)}`}
+                            </span>
+                            <CopyButton textToCopy={address} />
+                        </>
                     )}
                 </h2>
                 <h2>Balance: <span>{contractBalance}</span> TON</h2>
