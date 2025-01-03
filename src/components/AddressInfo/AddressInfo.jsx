@@ -28,6 +28,7 @@ function AddressInfo() {
       navigate(path);
     };
 
+
     useEffect(() => {
         if (!address) {
             setIsError(true);
@@ -37,7 +38,7 @@ function AddressInfo() {
         axios
             .get(`https://tonapi.io/v2/accounts/${address}`)
             .then((response) => {
-                const balance = response.data.balance / 10 ** 9;
+                const balance = response.data.balance / 10**9;
                 setContractBalance(balance);
 
                 const parsedRawAddress = response.data.address;
@@ -46,41 +47,28 @@ function AddressInfo() {
                 const parsedStatus = response.data.status;
                 setStatus(parsedStatus);
 
-                const name = response.data.name || "";
+                const name = response.data.name || '';
                 setWalletName(name);
 
-                const interfaces = response.data.get_methods || [];
-                if (interfaces.length === 0) {
-                    setContractInterface("unknown");
-                } else {
-                    const processedInterfaces = interfaces.flatMap((iface) =>
-                        iface.match(/[a-zA-Z0-9_]+/g)
-                    );
-                    setContractInterface(processedInterfaces);
-                }
+                const interfaces = response.data.interfaces || [];
+                
+                const processedInterfaces = interfaces.flatMap((iface) =>
+                    iface.match(/[a-zA-Z0-9_]+/g)
+                );
+                setContractInterface(processedInterfaces);
 
-                const type = getClosestContractType(interfaces);
+                const type = getClosestContractType(processedInterfaces);
                 setContractType(type);
 
-                if (
-                    balance === 0 &&
-                    interfaces.length === 0 &&
-                    !name &&
-                    (parsedStatus === "nonexist" || parsedStatus === "Nonexist")
-                ) {
-                    setIsError(true);
-                } else {
-                    setIsError(false);
-                }
+                setIsError(false);
+
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
-                setIsError(true); 
+                setIsError(true);
             });
     }, [address]);
-
-    const ComponentToRender = contractType !== "unknown" ? ContractComponents[contractType] : null;
-
+    
     if (isError) {
         return (
             <>
@@ -94,27 +82,22 @@ function AddressInfo() {
         );
     }
 
+    const ComponentToRender = contractType !== "unknown" ? ContractComponents[contractType] : null;
+    
     return (
         <>
             <Header />
 
             <div className={styles.blockInfo}>
-                {ComponentToRender && contractInterface !== "unknown" && (
-                    <ComponentToRender
+                {ComponentToRender && contractInterface.length > 0 && (
+                    <ComponentToRender 
                         address={address}
                         contractBalance={contractBalance}
-                        contractInterface={Array.isArray(contractInterface) ? contractInterface.join(", ") : contractInterface}
+                        contractInterface={contractInterface.join(", ")}
                         rawAddress={rawAddress}
                         status={status}
                         walletName={walletName || undefined}
                     />
-                )}
-                {contractInterface === "unknown" && (
-                    <div>
-                        <h2>Contract Interface: Unknown</h2>
-                        <p>Balance: {contractBalance} TON</p>
-                        <p>Additional data not available for this address.</p>
-                    </div>
                 )}
             </div>
 

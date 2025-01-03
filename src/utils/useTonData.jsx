@@ -16,7 +16,7 @@ export default function useTonData() {
               total_supply: attributes.total_supply,
               market_cap_usd: attributes.market_cap_usd,
             });
-            console.log('Fetched Data:', attributes);
+            // console.log('Fetched Data:', attributes);
           })
           .catch((error) => {
             console.error('Error fetching data:', error);
