@@ -1,11 +1,10 @@
 import styles from "./AddressInfo.module.scss";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getClosestContractType } from "./helpers/getContractType";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { ContractComponents } from "./ContractTypesComponents/ContractComponent";
-import { use } from "react";
 import History from "./ContractTypesComponents/Templates/History/History";
 import Tokens from "./ContractTypesComponents/Templates/Tokens/Tokens";
 import Collectibles from "./ContractTypesComponents/Templates/Collectibles/Collectibles";
@@ -14,22 +13,31 @@ import ContractMenu from "./ContractTypesComponents/Templates/ContractMenu/Contr
 
 function AddressInfo() {
     const { address } = useParams();
-    const [contractInterface, setContractInterface] = useState([]);
+    const [contractInterface, setContractInterface] = useState("unknown");
     const [contractType, setContractType] = useState("unknown");
     const [contractBalance, setContractBalance] = useState(0);
-    const [rawAddress, setRawAddress] = useState('');
-    const [status, setStatus] = useState('Nonexist');
-    const [walletName, setWalletName] = useState('');
-    const [activeTab, setActiveTab] = useState("History"); 
+    const [rawAddress, setRawAddress] = useState("");
+    const [status, setStatus] = useState("Nonexist");
+    const [walletName, setWalletName] = useState("");
+    const [activeTab, setActiveTab] = useState("History");
+    const [isError, setIsError] = useState(false);
+    
+    const navigate = useNavigate();
 
+    const handleNavigation = (path) => {
+      navigate(path);
+    };
 
     useEffect(() => {
-        if (!address) return;
+        if (!address) {
+            setIsError(true);
+            return;
+        }
 
         axios
             .get(`https://tonapi.io/v2/accounts/${address}`)
             .then((response) => {
-                const balance = response.data.balance / 10**9;
+                const balance = response.data.balance / 10 ** 9;
                 setContractBalance(balance);
 
                 const parsedRawAddress = response.data.address;
@@ -38,42 +46,75 @@ function AddressInfo() {
                 const parsedStatus = response.data.status;
                 setStatus(parsedStatus);
 
-                const name = response.data.name || '';
+                const name = response.data.name || "";
                 setWalletName(name);
 
-                const interfaces = response.data.interfaces || [];
-                
-                const processedInterfaces = interfaces.flatMap((iface) =>
-                    iface.match(/[a-zA-Z0-9_]+/g)
-                );
-                setContractInterface(processedInterfaces);
+                const interfaces = response.data.get_methods || [];
+                if (interfaces.length === 0) {
+                    setContractInterface("unknown");
+                } else {
+                    const processedInterfaces = interfaces.flatMap((iface) =>
+                        iface.match(/[a-zA-Z0-9_]+/g)
+                    );
+                    setContractInterface(processedInterfaces);
+                }
 
-                const type = getClosestContractType(processedInterfaces);
+                const type = getClosestContractType(interfaces);
                 setContractType(type);
 
+                if (
+                    balance === 0 &&
+                    interfaces.length === 0 &&
+                    !name &&
+                    (parsedStatus === "nonexist" || parsedStatus === "Nonexist")
+                ) {
+                    setIsError(true);
+                } else {
+                    setIsError(false);
+                }
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
-                setContractType("unknown"); 
+                setIsError(true); 
             });
     }, [address]);
 
     const ComponentToRender = contractType !== "unknown" ? ContractComponents[contractType] : null;
-    
+
+    if (isError) {
+        return (
+            <>
+                <Header />
+                <div className={styles.error}>
+                    <h2>Address not found or invalid</h2>
+                    <h3>The provided address does not contain any data or balance.</h3>
+                    <button onClick={() => handleNavigation('/')}>Back</button>
+                </div>
+            </>
+        );
+    }
+
     return (
         <>
             <Header />
 
             <div className={styles.blockInfo}>
-                {ComponentToRender && contractInterface.length > 0 && (
-                    <ComponentToRender 
+                {ComponentToRender && contractInterface !== "unknown" && (
+                    <ComponentToRender
                         address={address}
                         contractBalance={contractBalance}
-                        contractInterface={contractInterface.join(", ")}
+                        contractInterface={Array.isArray(contractInterface) ? contractInterface.join(", ") : contractInterface}
                         rawAddress={rawAddress}
                         status={status}
                         walletName={walletName || undefined}
                     />
+                )}
+                {contractInterface === "unknown" && (
+                    <div>
+                        <h2>Contract Interface: Unknown</h2>
+                        <p>Balance: {contractBalance} TON</p>
+                        <p>Additional data not available for this address.</p>
+                    </div>
                 )}
             </div>
 

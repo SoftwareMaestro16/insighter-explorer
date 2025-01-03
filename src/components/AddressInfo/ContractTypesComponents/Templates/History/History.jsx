@@ -16,6 +16,12 @@ function History({ rawAddress }) {
             .catch((error) => console.error("Error fetching data:", error));
     }, [rawAddress]);
 
+    if (!history) {
+        return (
+            <h3>History is Emppy.</h3>
+        );
+    }
+
     const formatAddress = (address) =>
         `${address.substring(0, 4)}...${address.substring(address.length - 4)}`;
 
